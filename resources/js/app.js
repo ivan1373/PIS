@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('./adminlte.min');
 
 window.Vue = require('vue');
 
