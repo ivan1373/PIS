@@ -15,6 +15,7 @@ class RoomController extends Controller
     public function index()
     {
         //
+        return view('sobe.index');
     }
 
     /**
@@ -25,6 +26,7 @@ class RoomController extends Controller
     public function create()
     {
         //
+        return view('sobe.create');
     }
 
     /**

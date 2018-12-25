@@ -15,6 +15,7 @@ class NoteController extends Controller
     public function index()
     {
         //
+        return view('napomene.index');
     }
 
     /**
@@ -25,6 +26,7 @@ class NoteController extends Controller
     public function create()
     {
         //
+        return view('napomene.create');
     }
 
     /**

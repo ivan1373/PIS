@@ -18,4 +18,23 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin', 'HomeController@dashboard');
+
+Route::prefix('admin')->group(function(){
+
+    Route::get('/', 'PagesController@dashboard');
+
+    Route::prefix('napomene')->group(function(){
+    Route::get('/', 'NoteController@index');
+    Route::get('nova', 'NoteController@create');
+    Route::get('{id}', 'NoteController@show');
+    });
+
+    Route::prefix('sobe')->group(function(){
+    Route::get('/', 'RoomController@index');
+    Route::get('nova', 'RoomController@create');
+    Route::get('{id}', 'RoomController@show');
+    });
+
+});
+
+
