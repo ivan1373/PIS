@@ -15,6 +15,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = 'users';
+    public $timestamps = true;
+
     protected $fillable = [
         'name', 'email', 'password', 'slika', 'isadmin'
     ];
@@ -27,4 +30,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function note()
+    {
+        return $this->hasMany('App\Note');
+    }
 }

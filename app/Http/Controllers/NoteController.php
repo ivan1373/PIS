@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Note;
 use Illuminate\Http\Request;
+use Auth;
 
 class NoteController extends Controller
 {
@@ -15,7 +16,9 @@ class NoteController extends Controller
     public function index()
     {
         //
-        return view('napomene.index');
+        $notes = Note::all();
+        $notesCount = Note::all()->count();
+        return view('napomene.index', compact('notes', 'notesCount'));
     }
 
     /**
@@ -38,6 +41,21 @@ class NoteController extends Controller
     public function store(Request $request)
     {
         //
+        $note = new Note;
+
+        $request->validate([
+            'naslov' => 'required|min:10',
+            'tijelo' => 'required'
+        ]);
+
+        $note->naslov = $request->get('naslov');
+        $note->tijelo_nap = $request->get('tijelo');
+        $note->user_id = Auth::id();
+
+        $note->save();
+        $request->session()->flash('status', 'Napomena uspješno stvorena!');
+        return redirect('admin/napomene');
+
     }
 
     /**

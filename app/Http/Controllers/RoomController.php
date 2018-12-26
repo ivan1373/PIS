@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Room;
+use App\RoomType;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -15,7 +16,33 @@ class RoomController extends Controller
     public function index()
     {
         //
-        return view('sobe.index');
+        $rooms = Room::all();
+        return view('sobe.index',compact('rooms'));
+    }
+
+    public function roomtypes()
+    {
+        $types = RoomType::all();
+        $typesCount = RoomType::all()->count();
+        return view('sobe.roomtype',compact('types','typesCount'));
+    }
+
+    public function store_roomtypes(Request $request)
+    {
+        $type = new RoomType;
+
+        $request->validate([
+            'br_kreveta' => 'required|numeric|lt:5|unique:room_types',
+            'cijena' => 'required|numeric'
+        ]);
+
+        $type->br_kreveta = $request->get('br_kreveta');
+        $type->cijena = $request->get('cijena');
+        $type->save();
+
+        $request->session()->flash('status', 'Vrsta sobe uspješno stvorena!');
+
+        return back();
     }
 
     /**
@@ -26,7 +53,8 @@ class RoomController extends Controller
     public function create()
     {
         //
-        return view('sobe.create');
+        $types = RoomType::all();
+        return view('sobe.create', compact('types'));
     }
 
     /**
@@ -38,6 +66,22 @@ class RoomController extends Controller
     public function store(Request $request)
     {
         //
+        $room = new Room;
+
+        $request->validate([
+           'naziv' => 'required|min:5|unique:rooms'
+        ]);
+
+        $room->naziv = $request->get('naziv');
+        $room->rtype_id = $request->get('vrsta');
+
+        //soba je inicijalno slobodna
+        $room->status = 0;
+
+        $room->save();
+        $request->session()->flash('status', 'Soba je uspješno stvorena!');
+
+        return redirect('admin/sobe');
     }
 
     /**

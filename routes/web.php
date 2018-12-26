@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Auth::routes();
@@ -26,12 +26,16 @@ Route::prefix('admin')->group(function(){
     Route::prefix('napomene')->group(function(){
     Route::get('/', 'NoteController@index');
     Route::get('nova', 'NoteController@create');
+    Route::post('nova', 'NoteController@store');
     Route::get('{id}', 'NoteController@show');
     });
 
     Route::prefix('sobe')->group(function(){
     Route::get('/', 'RoomController@index');
     Route::get('nova', 'RoomController@create');
+    Route::post('nova', 'RoomController@store');
+    Route::get('vrste', 'RoomController@roomtypes');
+    Route::post('vrste', 'RoomController@store_roomtypes');
     Route::get('{id}', 'RoomController@show');
     });
 

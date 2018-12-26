@@ -47,7 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <a href="{{url('admin')}}" class="brand-link">
       <img src="https://dairydoo.com/wp-content/uploads/2018/03/Placeholder.png" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Administracija</span>
     </a>
 
     <!-- Sidebar -->
@@ -58,7 +58,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="https://dairydoo.com/wp-content/uploads/2018/03/Placeholder.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -68,7 +68,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{url('admin/sobe')}}" class="nav-link">
               <i class="fa fa-bed nav-icon"></i>
               <p>Sobe</p>
             </a>
@@ -120,9 +120,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
     <div class="p-3">
-      <h5><i class="fa fa-user"></i>&nbsp;Korisničko ime(rola)</h5>
-      <p><i class="fa fa-cog"></i>&nbsp;Izmjena podataka</p>
-      <p>Odjava</p>
+      <h5 class="text-center"><i class="fa fa-user"></i>&nbsp;{{Auth::user()->name}}(rola)</h5><br>
+      <a href="#" class="nav-link"><i class="fa fa-cog"></i>&nbsp;Izmjena podataka</a>
+      <a href="#" class="nav-link"><i class="fa fa-sign-out"></i>&nbsp;Odjava</a>
     </div>
   </aside>
   <!-- /.control-sidebar -->
@@ -131,7 +131,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Projektiranje informacijskih sustava
+      Projektiranje informacijskih sustava 2018 | Ivan Miloš
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2014-2018 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
