@@ -4,7 +4,13 @@
 @endsection
 @section('content')
     <div class="container">
-
+        @if(session()->has('update'))
+            <div class="alert alert-success" role="alert">
+                <strong>{{session()->get('update')}}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                    &times;</button>
+            </div>
+        @endif
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item">
                 <a class="btn btn-outline-info active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Kartice</a>
@@ -28,7 +34,7 @@
                                     <p>Registriran: {{\Carbon\Carbon::parse($user->created_at)->diffForHumans()}}</p>
                                     <hr>
                                     <a href="#" class="btn btn-outline-info" >Detalji <i class="fa fa-info"></i></a>&nbsp;
-                                    <a href="#" class="btn btn-outline-success" >Izmjena <i class="fa fa-cog"></i></a>
+                                    <a href="{{url('admin/korisnici')}}/{{$user->id}}/{{('izmjena')}}" class="btn btn-outline-success" >Izmjena <i class="fa fa-cog"></i></a>
                                     <hr>
                                     <form method="post" action="#">
                                         @csrf
@@ -61,11 +67,11 @@
                                 <td>{{$user->isadmin=='1'?'ADMINISTRATOR':'RECEPCIONER'}}</td>
                                 <td>{{\Carbon\Carbon::parse($user->created_at)->diffForHumans()}}</td>
                                 <td>
-                                    <a href="#" class="btn btn-outline-info">Uredi</a>
+                                    <a href="{{url('admin/korisnici')}}/{{$user->id}}/{{('izmjena')}}" class="btn btn-outline-info">Uredi  <i class="fa fa-cog"></i></a>
                                     <form method="post" action="#">
                                         @csrf
                                         {{ method_field('delete') }}
-                                        <button type="submit" onclick="return confirm('Da li ste sigurni?')" class="btn btn-outline-danger">Izbriši</button>
+                                        <button type="submit" onclick="return confirm('Da li ste sigurni?')" class="btn btn-outline-danger">Izbriši <i class="fa fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>

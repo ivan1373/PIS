@@ -26,8 +26,7 @@ class RoomController extends Controller
     public function roomtypes()
     {
         $types = RoomType::all();
-        $typesCount = RoomType::all()->count();
-        return view('sobe.roomtype',compact('types','typesCount'));
+        return view('sobe.roomtype',compact('types'));
     }
 
     public function store_roomtypes(Request $request)

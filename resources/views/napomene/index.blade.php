@@ -32,7 +32,7 @@
                     <form method="post" action="{{url('admin/napomene')}}/{{$note->id}}">
                         @csrf
                         {{method_field('delete')}}
-                        <button type="submit" onclick="return confirm('Da li ste sigurni?')" class="btn btn-outline-danger">Izbriši</button>
+                        <button type="submit" onclick="return confirm('Da li ste sigurni?')" class="btn btn-outline-danger">Izbriši  <i class="fa fa-trash"></i></button>
                     </form>
                 </td>
             </tr>

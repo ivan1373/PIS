@@ -48,6 +48,8 @@ Route::prefix('admin')->group(function(){
 
     Route::prefix('korisnici')->group(function(){
     Route::get('/', 'UserController@index');
+    Route::get('{id}/izmjena', 'UserController@edit');
+    Route::put('{id}', 'UserController@update');
     });
 
 });

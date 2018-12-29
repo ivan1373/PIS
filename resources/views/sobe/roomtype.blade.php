@@ -66,11 +66,11 @@
                                 <td>{{$type->br_kreveta}}</td>
                                 <td>{{$type->cijena}}</td>
                                 <td>
-                                    <a href="{{url('admin/sobe/vrste')}}/{{$type->id}}/{{('izmjena')}}" class="btn btn-outline-info">Uredi</a>
+                                    <a href="{{url('admin/sobe/vrste')}}/{{$type->id}}/{{('izmjena')}}" class="btn btn-outline-info">Uredi  <i class="fa fa-cog"></i></a>
                                     <form method="post" action="{{url('admin/sobe/vrste')}}/{{$type->id}}">
                                         @csrf
                                         {{ method_field('delete') }}
-                                        <button type="submit" onclick="return confirm('Da li ste sigurni?')" class="btn btn-outline-danger">Izbriši</button>
+                                        <button type="submit" onclick="return confirm('Da li ste sigurni?')" class="btn btn-outline-danger">Izbriši  <i class="fa fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>

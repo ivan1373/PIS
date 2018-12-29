@@ -67,6 +67,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        $user = User::findOrFail($id);
+        return view('korisnici.edit',compact('user'));
     }
 
     /**
@@ -79,6 +81,21 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = User::findOrFail($id);
+
+        $request->validate([
+            'lozinka' => 'required',
+            'lozinkaP' => 'same:lozinka'
+        ]);
+
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->password = bcrypt($request->get('lozinka'));
+        $user->isadmin = $request->get('vrsta');
+        $user->save();
+
+        $request->session()->flash('update','Korisnički podaci uspješno izmijenjeni!');
+        return redirect('admin/korisnici');
     }
 
     /**
