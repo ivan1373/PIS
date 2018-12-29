@@ -56,6 +56,7 @@
                                 <button type="submit" class="btn btn-info">
                                     Prijava
                                 </button>
+                                <a href="{{url('google')}}" class="btn btn-danger">Prijava sa Google <i class="fa fa-google-plus"></i></a>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">

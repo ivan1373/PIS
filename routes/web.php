@@ -54,4 +54,7 @@ Route::prefix('admin')->group(function(){
 
 });
 
+Route::get('google', 'Auth\LoginController@redirectToProvider');
+Route::get('google/callback', 'Auth\LoginController@handleProviderCallback');
+
 
