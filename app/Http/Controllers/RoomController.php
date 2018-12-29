@@ -16,7 +16,10 @@ class RoomController extends Controller
     public function index()
     {
         //
-        $rooms = Room::all();
+        $rooms = Room::select('rooms.*')
+            ->join('room_types', 'room_types.id', '=', 'rooms.rtype_id')
+            ->orderBy('room_types.br_kreveta')
+            ->get();
         return view('sobe.index',compact('rooms'));
     }
 
@@ -43,6 +46,40 @@ class RoomController extends Controller
         $request->session()->flash('status', 'Vrsta sobe uspješno stvorena!');
 
         return back();
+    }
+
+    public function edit_roomtypes($id)
+    {
+        $roomType = RoomType::findOrFail($id);
+        return view('sobe.roomtypeEdit',compact('roomType'));
+    }
+
+    public function update_roomtypes(Request $request, $id)
+    {
+
+        $request->validate([
+            'br_kreveta' => 'required|numeric|lt:5',
+            'cijena' => 'required|numeric'
+        ]);
+
+        $roomType = RoomType::findOrFail($id);
+
+        $roomType->br_kreveta = $request->get('br_kreveta');
+        $roomType->cijena = $request->get('cijena');
+        $roomType->save();
+
+        $request->session()->flash('status1', 'Vrsta sobe uspješno izmijenjena!');
+
+        return redirect('admin/sobe/vrste');
+
+    }
+
+    public function destroy_roomtypes($id)
+    {
+        $roomType = RoomType::findOrFail($id);
+        $roomType->delete();
+        session()->flash('delete', 'Vrsta sobe uspješno izbrisana');
+        return redirect('admin/sobe/vrste');
     }
 
     /**
@@ -104,6 +141,8 @@ class RoomController extends Controller
     public function edit(Room $room)
     {
         //
+        $types = RoomType::all();
+        return view('sobe.edit',compact('room','types'));
     }
 
     /**
@@ -116,6 +155,31 @@ class RoomController extends Controller
     public function update(Request $request, Room $room)
     {
         //
+        if($room->naziv === $request->get('naziv'))
+        {
+            $request->validate([
+                'naziv' => 'required'
+            ]);
+
+            $room->naziv = $request->get('naziv');
+            $room->rtype_id = $request->get('vrsta');
+            $room->save();
+            $request->session()->flash('update', 'Soba je uspješno izmjenjena!');
+
+            return redirect('admin/sobe');
+        }
+        else{
+            $request->validate([
+                'naziv' => 'required|unique:rooms'
+            ]);
+
+            $room->naziv = $request->get('naziv');
+            $room->rtype_id = $request->get('vrsta');
+            $room->save();
+            $request->session()->flash('update', 'Soba je uspješno izmjenjena!');
+
+            return redirect('admin/sobe');
+        }
     }
 
     /**
@@ -127,5 +191,10 @@ class RoomController extends Controller
     public function destroy(Room $room)
     {
         //
+
+        $room->delete();
+        session()->flash('delete', 'Soba je uspješno izbrisana!');
+        return back();
+
     }
 }

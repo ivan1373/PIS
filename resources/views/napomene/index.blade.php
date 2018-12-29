@@ -1,9 +1,7 @@
 @extends('layouts.admin')
 @section('header')
-    <br>
     <h1>Pregled napomena</h1><hr>
     <a href="{{url('admin/napomene/nova')}}" class="btn btn-outline-success">Nova napomena</a>
-    <br>
 @endsection
 @section('content')
     <div class="container">
@@ -15,25 +13,34 @@
         </div>
     @endif
     <div class="table-responsive">
-        <table class="table">
-            <caption>Prikazano je {{$notesCount}} napomena</caption>
+        <table id="example" class="table table-striped table-bordered">
             <thead class="bg-info">
             <tr>
                 <th scope="col">Korisnik</th>
-                <th scope="col">Naslov</th>
+                <th scope="col">Naziv</th>
+                <th scope="col">Napomena stvorena</th>
                 <th scope="col">Radnja</th>
             </tr>
             </thead>
             <tbody>
             @foreach($notes as $note)
             <tr>
-                <th scope="row">{{$note->user->name}}</th>
+                <td scope="row">{{$note->user->name}}</td>
                 <td>{{$note->naslov}}</td>
                 <td>{{$note->created_at->diffForHumans()}}</td>
+                <td>
+                    <form method="post" action="{{url('admin/napomene')}}/{{$note->id}}">
+                        @csrf
+                        {{method_field('delete')}}
+                        <button type="submit" onclick="return confirm('Da li ste sigurni?')" class="btn btn-outline-danger">Izbriši</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
             </tbody>
+
         </table>
     </div>
     </div>
+    
 @endsection

@@ -28,6 +28,7 @@ Route::prefix('admin')->group(function(){
     Route::get('nova', 'NoteController@create');
     Route::post('nova', 'NoteController@store');
     Route::get('{id}', 'NoteController@show');
+    Route::delete('{note}', 'NoteController@destroy');
     });
 
     Route::prefix('sobe')->group(function(){
@@ -36,7 +37,17 @@ Route::prefix('admin')->group(function(){
     Route::post('nova', 'RoomController@store');
     Route::get('vrste', 'RoomController@roomtypes');
     Route::post('vrste', 'RoomController@store_roomtypes');
-    Route::get('{id}', 'RoomController@show');
+    Route::get('vrste/{id}/izmjena', 'RoomController@edit_roomtypes');
+    Route::put('vrste/{id}', 'RoomController@update_roomtypes');
+    Route::delete('vrste/{id}', 'RoomController@destroy_roomtypes');
+    Route::get('{room}/izmjena', 'RoomController@edit');
+    Route::put('{room}', 'RoomController@update');
+    Route::delete('{room}', 'RoomController@destroy');
+    Route::get('{room}', 'RoomController@show');
+    });
+
+    Route::prefix('korisnici')->group(function(){
+    Route::get('/', 'UserController@index');
     });
 
 });

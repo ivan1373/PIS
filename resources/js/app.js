@@ -9,6 +9,8 @@ require('./bootstrap');
 require('./adminlte.min');
 
 window.Vue = require('vue');
+require( 'datatables.net-bs4' )();
+require( 'datatables.net-responsive-bs4' )();
 
 /**
  * The following block of code may be used to automatically register your

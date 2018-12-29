@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('header')
-    <br><h1>Stvaranje napomene</h1><br>
+    <h1>Stvaranje napomene</h1>
 @endsection
 @section('content')
     <div class="container">

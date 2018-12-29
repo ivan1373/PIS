@@ -12,14 +12,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>{{ config('app.name', 'Laravel') }}</title>
 
   <!-- Scripts -->
+
   <script src="{{ asset('js/app.js') }}" defer></script>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+  <nav class="main-header navbar navbar-expand bg-info navbar-light border-bottom">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -86,7 +88,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
           </li>
           <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{url('admin/korisnici')}}" class="nav-link">
                 <i class="fa fa-users nav-icon"></i>
                 <p>Korisnici</p>
               </a>
@@ -103,19 +105,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid text-center">
+          <br>
         @yield('header')
+          <br>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
 
     <!-- Main content -->
     <div class="content">
+        <br>
       @yield('content')
+        <br>
     </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
+    <br>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -140,10 +146,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap 4 -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            "language": {
+            "sEmptyTable":      "Nema podataka u tablici",
+            "sInfo":            "Prikazano _START_ do _END_ od _TOTAL_ rezultata",
+            "sInfoEmpty":       "Prikazano 0 do 0 od 0 rezultata",
+            "sInfoFiltered":    "(filtrirano iz _MAX_ ukupnih rezultata)",
+            "sInfoPostFix":     "",
+            "sInfoThousands":   ",",
+            "sLengthMenu":      "Prikaži _MENU_ rezultata po stranici",
+            "sLoadingRecords":  "Dohvaćam...",
+            "sProcessing":      "Obrađujem...",
+            "sSearch":          "Pretraži:",
+            "sZeroRecords":     "Ništa nije pronađeno",
+            "oPaginate": {
+                "sFirst":       "Prva",
+                "sPrevious":    "Nazad",
+                "sNext":        "Naprijed",
+                "sLast":        "Zadnja"
+            },
+            "oAria": {
+                "sSortAscending":  ": aktiviraj za rastući poredak",
+                "sSortDescending": ": aktiviraj za padajući poredak"
+            }
+          }
+        } );
+    } );
+</script>
 </body>
 </html>

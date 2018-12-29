@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ReservationController extends Controller
 {
+
+    public function __construct()
+    {
+        Carbon::setLocale('hr');
+    }
     /**
      * Display a listing of the resource.
      *

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Note;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Auth;
+use App\User;
+use Illuminate\Support\Facades\DB;
 
-class NoteController extends Controller
+class UserController extends Controller
 {
 
     public function __construct()
@@ -22,9 +22,8 @@ class NoteController extends Controller
     public function index()
     {
         //
-        $notes = Note::all();
-        $notesCount = Note::all()->count();
-        return view('napomene.index', compact('notes', 'notesCount'));
+        $users = DB::table('users')->orderBy('isadmin','desc')->get();
+        return view('korisnici.index',compact('users'));
     }
 
     /**
@@ -35,7 +34,6 @@ class NoteController extends Controller
     public function create()
     {
         //
-        return view('napomene.create');
     }
 
     /**
@@ -47,30 +45,15 @@ class NoteController extends Controller
     public function store(Request $request)
     {
         //
-        $note = new Note;
-
-        $request->validate([
-            'naslov' => 'required|min:10',
-            'tijelo' => 'required'
-        ]);
-
-        $note->naslov = $request->get('naslov');
-        $note->tijelo_nap = $request->get('tijelo');
-        $note->user_id = Auth::id();
-
-        $note->save();
-        $request->session()->flash('status', 'Napomena uspješno stvorena!');
-        return redirect('admin/napomene');
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Note  $note
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Note $note)
+    public function show($id)
     {
         //
     }
@@ -78,10 +61,10 @@ class NoteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Note  $note
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Note $note)
+    public function edit($id)
     {
         //
     }
@@ -90,10 +73,10 @@ class NoteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Note  $note
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Note $note)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -101,14 +84,11 @@ class NoteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Note  $note
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Note $note)
+    public function destroy($id)
     {
         //
-        $note->delete();
-        session()->flash('delete', 'Napomena uspješno izbrisana!');
-        return back();
     }
 }
