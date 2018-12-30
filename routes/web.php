@@ -52,6 +52,10 @@ Route::prefix('admin')->group(function(){
     Route::put('{id}', 'UserController@update');
     });
 
+    Route::get('logout', 'ProfileController@logout');
+    Route::get('izmjena', 'ProfileController@edit');
+    Route::put('izmjena', 'ProfileController@update');
+
 });
 
 Route::get('google', 'Auth\LoginController@redirectToProvider');

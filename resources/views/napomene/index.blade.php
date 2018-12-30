@@ -12,6 +12,13 @@
                 &times;</button>
         </div>
     @endif
+     @if(session()->has('delete'))
+            <div class="alert alert-danger" role="alert">
+                <strong>{{session()->get('delete')}}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                    &times;</button>
+            </div>
+     @endif
     <div class="table-responsive">
         <table id="example" class="table table-striped table-bordered">
             <thead class="bg-info">

@@ -18,6 +18,18 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .business-header {
+            height: 50vh;
+            min-height: 300px;
+            background: url('/images/pozadina2.jpg') center center no-repeat scroll;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            -o-background-size: cover;
+        }
+
+    </style>
 </head>
 <body>
     <div id="app">

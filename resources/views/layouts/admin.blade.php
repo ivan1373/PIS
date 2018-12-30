@@ -47,7 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{url('admin')}}" class="brand-link">
-      <img src="https://dairydoo.com/wp-content/uploads/2018/03/Placeholder.png" class="brand-image img-circle elevation-3"
+      <img src="{{url('/storage/images')}}/{{Auth::user()->slika}}" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Administracija</span>
     </a>
@@ -57,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="https://dairydoo.com/wp-content/uploads/2018/03/Placeholder.png" class="img-circle elevation-2" alt="User Image">
+          <img src="{{url('/storage/images')}}/{{Auth::user()->slika}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a class="d-block">{{ Auth::user()->name }}</a>
@@ -127,8 +127,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Control sidebar content goes here -->
     <div class="p-3">
       <h5 class="text-center"><i class="fa fa-user"></i>&nbsp;{{Auth::user()->name}}(rola)</h5><br>
-      <a href="#" class="nav-link"><i class="fa fa-cog"></i>&nbsp;Izmjena podataka</a>
-      <a href="#" class="nav-link"><i class="fa fa-sign-out"></i>&nbsp;Odjava</a>
+      <a href="{{url('admin/izmjena')}}" class="nav-link"><i class="fa fa-cog"></i>&nbsp;Izmjena podataka</a>
+      <a href="{{url('admin/logout')}}" class="nav-link"><i class="fa fa-sign-out"></i>&nbsp;Odjava</a>
     </div>
   </aside>
   <!-- /.control-sidebar -->
