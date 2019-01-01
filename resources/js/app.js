@@ -12,6 +12,10 @@ window.Vue = require('vue');
 require( 'datatables.net-bs4' )();
 require( 'datatables.net-responsive-bs4' )();
 
+//require('fullcalendar')();
+//window.Chart = require('Chart.min');
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -34,3 +38,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app'
 });
+
+
+

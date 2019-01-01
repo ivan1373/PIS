@@ -29434,6 +29434,10 @@ window.Vue = __webpack_require__(39);
 __webpack_require__(11)();
 __webpack_require__(42)();
 
+//require('fullcalendar')();
+//window.Chart = require('Chart.min');
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

@@ -15,7 +15,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <script src="{{ asset('js/app.js') }}" defer></script>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js" integrity="sha256-oSgtFCCmHWRPQ/JmR4OoZ3Xke1Pw4v50uh6pLcu+fIc=" crossorigin="anonymous"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -76,7 +76,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{url('admin/rezervacije')}}" class="nav-link">
                 <i class="fa fa-bell nav-icon"></i>
                 <p>Rezervacije</p>
               </a>
@@ -126,7 +126,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
     <div class="p-3">
-      <h5 class="text-center"><i class="fa fa-user"></i>&nbsp;{{Auth::user()->name}}(rola)</h5><br>
+      <h5 class="text-center"><i class="fa fa-user"></i>&nbsp;{{Auth::user()->name}} {{Auth::user()->isadmin?'ADMINISTRATOR':'RECEPCIONER'}}</h5><br>
       <a href="{{url('admin/izmjena')}}" class="nav-link"><i class="fa fa-cog"></i>&nbsp;Izmjena podataka</a>
       <a href="{{url('admin/logout')}}" class="nav-link"><i class="fa fa-sign-out"></i>&nbsp;Odjava</a>
     </div>
@@ -177,7 +177,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             }
           }
         } );
+
+
     } );
 </script>
+
+
 </body>
 </html>

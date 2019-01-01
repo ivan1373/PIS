@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Reservation;
+use Carbon\Carbon;
+use App\Room;
+use Auth;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -20,6 +23,7 @@ class ReservationController extends Controller
     public function index()
     {
         //
+        return view('rezervacije.index');
     }
 
     /**
@@ -30,6 +34,8 @@ class ReservationController extends Controller
     public function create()
     {
         //
+        $rooms = Room::all();
+        return view('rezervacije.create',compact('rooms'));
     }
 
     /**

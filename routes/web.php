@@ -31,6 +31,11 @@ Route::prefix('admin')->group(function(){
     Route::delete('{note}', 'NoteController@destroy');
     });
 
+    Route::prefix('rezervacije')->group(function(){
+    Route::get('/', 'ReservationController@index');
+    Route::get('nova','ReservationController@create');
+    });
+
     Route::prefix('sobe')->group(function(){
     Route::get('/', 'RoomController@index');
     Route::get('nova', 'RoomController@create');

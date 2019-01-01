@@ -14494,6 +14494,9 @@ a.text-dark:focus {
   clip: auto;
 }
 
+/*@import '~fullcalendar/dist/fullcalendar.min.css';
+@import '~fullcalendar/dist/fullcalendar.print.min.css';*/
+
 /*!
  *   AdminLTE v3.0.0-alpha
  *   Author: Abdullah Almsaeed

@@ -78,7 +78,7 @@ class LoginController extends Controller
                 $user->email = $googleUser->email;
                 //$user->google_id = $googleUser->id;
                 $user->password = md5(rand(1,10000));
-                $user->slika = 'slika';
+                $user->slika = 'slika.png';
                 $user->isadmin = '0';
                 $user->save();
                 auth()->loginUsingId($user->id);
