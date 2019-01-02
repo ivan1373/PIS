@@ -34,6 +34,7 @@ Route::prefix('admin')->group(function(){
     Route::prefix('rezervacije')->group(function(){
     Route::get('/', 'ReservationController@index');
     Route::get('nova','ReservationController@create');
+    Route::post('nova','ReservationController@store');
     });
 
     Route::prefix('sobe')->group(function(){
@@ -49,11 +50,10 @@ Route::prefix('admin')->group(function(){
     Route::put('{room}', 'RoomController@update');
     Route::delete('{room}', 'RoomController@destroy');
     Route::get('{room}', 'RoomController@show');
-
-    //rezervacija
-    Route::get('{room}/rezerviraj', 'ReservationController@create');
-    Route::post('rezerviraj', 'ReservationController@store');
     });
+
+
+
 
     Route::prefix('korisnici')->group(function(){
     Route::get('/', 'UserController@index');

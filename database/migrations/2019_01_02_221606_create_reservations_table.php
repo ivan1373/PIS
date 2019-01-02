@@ -16,14 +16,12 @@ class CreateReservationsTable extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('gost');
-            $table->date('pocetak');
-            $table->date('kraj');
+            $table->date('datum_od');
+            $table->date('datum_do');
             $table->boolean('dorucak');
-            $table->boolean('zavrsena');
-            $table->boolean('naplacena');
-            $table->double('iznos');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->boolean('zavrsena')->default('0');
+            $table->boolean('naplacena')->default('0');
+            $table->double('iznos')->default(0.0);
             $table->timestamps();
         });
     }

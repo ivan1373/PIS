@@ -22,7 +22,7 @@
 
                 </div>
             @endif
-            <form role="form" action="{{url('admin/sobe/rezerviraj')}}" method="POST">
+            <form role="form" action="{{url('admin/rezervacije/nova')}}" method="POST">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
@@ -36,6 +36,12 @@
                     <div class="form-group">
                         <label>Datum Do</label>
                         <input type="date" name="datum2" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Odaberite sobu/sobe</label><br>
+                        @foreach($rooms as $room)
+                        <input type="checkbox" name="soba" value="{{$room->id}}"> Naziv Sobe: <b>{{$room->naziv}}</b>, Broj Kreveta: <b>{{$room->room_type->br_kreveta}}</b><br>
+                        @endforeach
                     </div>
                     <div class="form-group">
                         <p class="text-bold">Doručak</p>
@@ -54,7 +60,7 @@
                 <div class="card-footer">
                     <button type="submit" class="btn btn-outline-info">Stvori</button>
                     <button type="reset" class="btn btn-outline-warning">Poništi</button>
-                    <a style="float:right;" href="{{url('admin/sobe')}}" class="btn btn-outline-success">Natrag</a>
+                    <a style="float:right;" href="{{url('admin/rezervacije')}}" class="btn btn-outline-success">Natrag</a>
                 </div>
             </form>
         </div>

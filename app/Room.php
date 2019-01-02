@@ -11,7 +11,7 @@ class Room extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'naziv', 'status', 'rtype_id'
+        'naziv', 'status', 'res_id', 'rtype_id'
     ];
 
     public function room_type()
@@ -19,8 +19,8 @@ class Room extends Model
         return $this->belongsTo('App\RoomType', 'rtype_id');
     }
 
-    public function rooms()
+    public function reservations()
     {
-        return $this->belongsToMany(Reservation::class);
+        return $this->belongsTo(Reservation::class);
     }
 }

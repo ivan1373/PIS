@@ -35,7 +35,6 @@
                     <img class="card-img-top" src="https://s-ec.bstatic.com/images/hotel/max1024x768/731/73118462.jpg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{$room->naziv}}</h5><hr>
-                        <a href="{{url('admin/sobe')}}/{{$room->id}}/{{('rezerviraj')}}" class="btn btn-outline-primary">Stvori rezervaciju <i class="fa fa-bell"></i></a><hr>
                         <p>Broj Kreveta: {{$room->room_type->br_kreveta}}</p>
                         <p>{{$room->status=='1'?'REZERVIRANA':'SLOBODNA'}}</p>
                         <p>Cijena noćenja: {{$room->room_type->cijena}}KM</p>
