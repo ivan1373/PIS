@@ -34,8 +34,7 @@ class ReservationController extends Controller
     public function create()
     {
         //
-        $rooms = Room::all();
-        return view('rezervacije.create',compact('rooms'));
+        return view('rezervacije.create');
     }
 
     /**

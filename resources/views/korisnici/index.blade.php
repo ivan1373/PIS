@@ -11,6 +11,13 @@
                     &times;</button>
             </div>
         @endif
+        @if(session()->has('delete'))
+                <div class="alert alert-danger" role="alert">
+                    <strong>{{session()->get('delete')}}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        &times;</button>
+                </div>
+        @endif
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item">
                 <a class="btn btn-outline-info active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Kartice</a>
@@ -22,11 +29,11 @@
         <br>
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div class="row">
+                <div class="row text-center">
                     @foreach($users as $user)
-                        <div class="col-4">
-                            <div class="card text-center" style="width: 20rem;">
-                                <img class="card-img-top" src="https://s-ec.bstatic.com/images/hotel/max1024x768/731/73118462.jpg" alt="Card image cap">
+                        <div class="col-lg-4 col-12">
+                            <div class="card text-center" style="width: 18rem;">
+                                <img class="card-img-top" src="{{url('/storage/images')}}/{{$user->slika}}" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">{{$user->name}}</h5>
                                     <p>E-Mail adresa: {{$user->email}}</p>

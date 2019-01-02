@@ -27,7 +27,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/', 'NoteController@index');
     Route::get('nova', 'NoteController@create');
     Route::post('nova', 'NoteController@store');
-    Route::get('{id}', 'NoteController@show');
+    Route::get('{note}', 'NoteController@show');
     Route::delete('{note}', 'NoteController@destroy');
     });
 
@@ -49,6 +49,10 @@ Route::prefix('admin')->group(function(){
     Route::put('{room}', 'RoomController@update');
     Route::delete('{room}', 'RoomController@destroy');
     Route::get('{room}', 'RoomController@show');
+
+    //rezervacija
+    Route::get('{room}/rezerviraj', 'ReservationController@create');
+    Route::post('rezerviraj', 'ReservationController@store');
     });
 
     Route::prefix('korisnici')->group(function(){

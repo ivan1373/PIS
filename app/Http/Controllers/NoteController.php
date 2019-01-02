@@ -73,6 +73,7 @@ class NoteController extends Controller
     public function show(Note $note)
     {
         //
+        return view('napomene.show',compact('note'));
     }
 
     /**

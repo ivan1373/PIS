@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 @section('header')
     <h1>Pregled Soba</h1>
-    <hr><a href="{{url('admin/sobe/nova')}}" class="btn btn-outline-success">Dodaj Sobu</a>
-        <a href="{{url('admin/sobe/vrste')}}" class="btn btn-outline-info">Vrste Soba</a>
+    <hr><a href="{{url('admin/sobe/nova')}}" class="btn btn-outline-success">Dodaj Sobu <i class="fa fa-plus"></i></a>
+        <a href="{{url('admin/sobe/vrste')}}" class="btn btn-outline-info">Vrste Soba <i class="fa fa-list"></i></a>
 @endsection
 @section('content')
     <div class="container"><br>
@@ -34,7 +34,8 @@
                 <div class="card" style="width: 20rem;">
                     <img class="card-img-top" src="https://s-ec.bstatic.com/images/hotel/max1024x768/731/73118462.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">{{$room->naziv}}</h5>
+                        <h5 class="card-title">{{$room->naziv}}</h5><hr>
+                        <a href="{{url('admin/sobe')}}/{{$room->id}}/{{('rezerviraj')}}" class="btn btn-outline-primary">Stvori rezervaciju <i class="fa fa-bell"></i></a><hr>
                         <p>Broj Kreveta: {{$room->room_type->br_kreveta}}</p>
                         <p>{{$room->status=='1'?'REZERVIRANA':'SLOBODNA'}}</p>
                         <p>Cijena noćenja: {{$room->room_type->cijena}}KM</p>

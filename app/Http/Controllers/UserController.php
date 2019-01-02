@@ -107,5 +107,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        //$this->authorize('delete',$id);
+        abort_if($id==Auth::id());
+        $user = User::findOrFail($id);
+
+        $user->delete();
+        session()->flash('delete','Korisnik je izbrisan!');
+        return back();
     }
 }

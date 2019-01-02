@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('header')
     <h1>Pregled napomena</h1><hr>
-    <a href="{{url('admin/napomene/nova')}}" class="btn btn-outline-success">Nova napomena</a>
+    <a href="{{url('admin/napomene/nova')}}" class="btn btn-outline-success">Nova napomena <i class="fa fa-plus"></i></a>
 @endsection
 @section('content')
     <div class="container">
@@ -33,7 +33,7 @@
             @foreach($notes as $note)
             <tr>
                 <td scope="row">{{$note->user->name}}</td>
-                <td>{{$note->naslov}}</td>
+                <td><a class="text-dark" href="{{url('admin/napomene')}}/{{$note->id}}">{{$note->naslov}}</a></td>
                 <td>{{$note->created_at->diffForHumans()}}</td>
                 <td>
                     <form method="post" action="{{url('admin/napomene')}}/{{$note->id}}">
