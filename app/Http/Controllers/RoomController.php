@@ -112,7 +112,7 @@ class RoomController extends Controller
         $room->rtype_id = $request->get('vrsta');
 
         //soba je inicijalno slobodna
-        $room->status = 0;
+        //$room->status = 0;
 
         $room->save();
         $request->session()->flash('status', 'Soba je uspješno stvorena!');

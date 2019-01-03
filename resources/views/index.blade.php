@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <header class="business-header">
+    <header class="business-header bg-gray-light">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label>Odaberite sobu/sobe</label><br>
                         @foreach($rooms as $room)
-                        <input type="checkbox" name="soba" value="{{$room->id}}"> Naziv Sobe: <b>{{$room->naziv}}</b>, Broj Kreveta: <b>{{$room->room_type->br_kreveta}}</b><br>
+                        <input type="checkbox" name="soba[]" value="{{$room->id}}"> Naziv Sobe: <b>{{$room->naziv}}</b>, Broj Kreveta: <b>{{$room->room_type->br_kreveta}}</b><br>
                         @endforeach
                     </div>
                     <div class="form-group">

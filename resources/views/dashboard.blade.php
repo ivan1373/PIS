@@ -8,8 +8,8 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-danger-gradient">
                     <div class="inner">
-                        <h3>150</h3>
-                        <p>Rezervacija</p>
+                        <h3>{{$reservations}}</h3>
+                        <p>Aktivnih Rezervacija</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-bell"></i>
@@ -20,7 +20,7 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{$rooms}}</h3>
                         <p>Soba</p>
                     </div>
                     <div class="icon">
@@ -32,7 +32,7 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-warning-gradient">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{$users}}</h3>
                         <p>Registriranih Korisnika</p>
                     </div>
                     <div class="icon">
@@ -44,7 +44,7 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-success-gradient">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{$notes}}</h3>
                         <p>Napomena</p>
                     </div>
                     <div class="icon">

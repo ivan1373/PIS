@@ -19,7 +19,7 @@ class CreateRoomsTable extends Migration
             $table->boolean('status')->default('0');
             $table->unsignedInteger('rtype_id');
             $table->unsignedInteger('res_id')->nullable();
-            $table->foreign('rtype_id')->references('id')->on('rooms')->onDelete('cascade');
+            $table->foreign('rtype_id')->references('id')->on('room_types')->onDelete('cascade');
             $table->foreign('res_id')->references('id')->on('reservations')->onDelete('cascade');
             $table->timestamps();
         });

@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-
+  <link rel="shortcut icon" type="image/x-icon" href="{{url('/images/favicon.ico')}}" />
   <title>{{ config('app.name', 'Laravel') }}</title>
 
   <!-- Scripts -->
@@ -34,7 +34,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      
+      <li class="nav-item">
+          <a class="nav-link" href="{{url('admin/rezervacije')}}">
+              <i class="fa fa-bell-o"></i>
+              @if($brojZavrsenih > 0)
+              <span title="Imate {{$brojZavrsenih}} zavrsenih rezervacija" class="badge badge-warning navbar-badge">{{$brojZavrsenih}}</span>
+              @endif
+          </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
             class="fa fa-th-large"></i></a>
@@ -91,6 +98,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a href="{{url('admin/korisnici')}}" class="nav-link">
                 <i class="fa fa-users nav-icon"></i>
                 <p>Korisnici</p>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a href="{{url('admin/izvjestaj')}}" class="nav-link">
+                  <i class="fa fa-file nav-icon"></i>
+                  <p>Dnevni Izvještaj</p>
               </a>
           </li>
         </ul>

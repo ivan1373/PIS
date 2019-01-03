@@ -33,7 +33,7 @@
             <div class="col-sm-4" align="center">
                 <div class="card" style="width: 20rem;">
                     <img class="card-img-top" src="https://s-ec.bstatic.com/images/hotel/max1024x768/731/73118462.jpg" alt="Card image cap">
-                    <div class="card-body">
+                    <div class="card-body {{$room->status?'bg-danger':''}}">
                         <h5 class="card-title">{{$room->naziv}}</h5><hr>
                         <p>Broj Kreveta: {{$room->room_type->br_kreveta}}</p>
                         <p>{{$room->status=='1'?'REZERVIRANA':'SLOBODNA'}}</p>

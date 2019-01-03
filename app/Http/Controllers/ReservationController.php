@@ -24,7 +24,24 @@ class ReservationController extends Controller
     public function index()
     {
         //
-        return view('rezervacije.index');
+        $reservations = Reservation::all();
+
+
+
+        $reservations->map(function($item,$key){
+            $item->datum_od=Carbon::parse($item->datum_od)->format('d-m-Y');
+            $item->datum_do=Carbon::parse($item->datum_do)->format('d-m-Y');
+        });
+
+        /*
+        foreach($reservations as $reservation)
+        {
+            $reservation->datum_od=Carbon::parse($reservation->datum_od)->format('d-m-Y');
+            $reservation->datum_do=Carbon::parse($reservation->datum_do)->format('d-m-Y');
+        }*/
+
+
+        return view('rezervacije.index',compact('reservations'));
     }
 
     /*public function searchRooms()
@@ -32,7 +49,7 @@ class ReservationController extends Controller
         $rooms = Room::where('status','0')->get();
         return view('rezervacije.roomList',$rooms);
     }
-*/
+    */
     /**
      * Show the form for creating a new resource.
      *
@@ -76,8 +93,8 @@ class ReservationController extends Controller
         $reservation->user_id = Auth::id();
         $reservation->save();
 
-        $sobe = collect([]);
-        $sobe->push($request->get('soba'));
+        $sobe = $request->soba;
+        //$sobe->push($request->get('soba'));
         //$sobe = $request->get('soba');
         foreach($sobe as $soba)
         {

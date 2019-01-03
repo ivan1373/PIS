@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="shortcut icon" type="image/x-icon" href="{{url('/images/favicon.ico')}}" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -22,7 +22,7 @@
         .business-header {
             height: 50vh;
             min-height: 300px;
-            background: url('/images/pozadina2.jpg') center center no-repeat scroll;
+            /*background: url('/images/slika1.jpeg') center center no-repeat;*/
             -webkit-background-size: cover;
             -moz-background-size: cover;
             background-size: cover;
@@ -91,7 +91,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>
