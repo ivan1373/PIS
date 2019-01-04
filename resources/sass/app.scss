@@ -31,3 +31,9 @@ h1 {
 .reserved {
     background-color: #FF4A62;
 }
+
+@media print {
+    @page {
+        margin: 0;
+    }
+}

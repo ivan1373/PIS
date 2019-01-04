@@ -1,28 +1,34 @@
 @extends('layouts.app')
 @section('content')
     <header class="business-header bg-gray-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h3 class="display-3 text-center text-dark mt-4">Administracija Hotelskog smještaja</h3>
-                </div>
-            </div>
-        </div>
+
     </header>
-    <div class="container text-center">
+    <div style="padding:75px 0;" class="container text-center">
         <br>
         <div class="row">
-            <div class="col-sm-4">
-                <i class="fa fa-html5 fa-5x" style="color:#DD4B25;margin-bottom: 10px;"></i>
-                <h5>HTML 5</h5>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow" style="width: 20rem;height: 20rem;">
+                    <img class="card-img-top" src="{{url('/images/html5.png')}}" alt="Card image cap">
+                    <div class="card-body border-dark">
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-4">
-                <i class="fa fa-calendar fa-5x text-primary" style="margin-bottom: 10px;"></i>
-                <h5>Lorem Ipsum</h5>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow" style="width: 20rem;height: 20rem;">
+                    <img class="card-img-top" src="{{url('/images/laravel.png')}}" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-4">
-                <i class="fa fa-google-plus-official fa-5x" style="color:#DD5144;margin-bottom: 10px;"></i>
-                <h5>Lorem Ipsum</h5>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow" style="width: 20rem;height: 20rem;">
+                    <img class="card-img-top" src="{{url('/images/mysql.jpg')}}" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

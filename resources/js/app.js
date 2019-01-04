@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 require('./adminlte.min');
+require('./printPage');
 
 window.Vue = require('vue');
 require( 'datatables.net-bs4' )();

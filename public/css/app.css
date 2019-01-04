@@ -29773,3 +29773,9 @@ h1 {
   background-color: #FF4A62;
 }
 
+@media print {
+@page {
+    margin: 0;
+}
+}
+

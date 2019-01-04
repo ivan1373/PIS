@@ -64,6 +64,7 @@ Route::prefix('admin')->group(function(){
     Route::get('logout', 'ProfileController@logout');
     Route::get('izmjena', 'ProfileController@edit');
     Route::put('izmjena', 'ProfileController@update');
+    Route::get('izvjestaj','PagesController@report');
 
 });
 

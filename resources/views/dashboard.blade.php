@@ -63,10 +63,16 @@
                 <canvas id="myChart2" width="400" height="400"></canvas>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="calendar"></div>
+            </div>
+        </div>
 
 
     </div>
     <script>
+
         var ctx = document.getElementById("myChart");
         var myChart = new Chart(ctx, {
             type: 'doughnut',
@@ -126,5 +132,6 @@
             },
 
         });
+
     </script>
 @endsection

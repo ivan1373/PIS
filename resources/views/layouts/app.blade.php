@@ -20,9 +20,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         .business-header {
-            height: 50vh;
+            height: 65vh;
             min-height: 300px;
-            /*background: url('/images/slika1.jpeg') center center no-repeat;*/
+            background: url('https://images.pexels.com/photos/862731/pexels-photo-862731.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') center center no-repeat scroll;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             background-size: cover;
