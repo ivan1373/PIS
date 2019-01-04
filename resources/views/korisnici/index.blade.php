@@ -30,28 +30,28 @@
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <div class="row text-center">
-                    @foreach($models as $model)
+                    @foreach($users as $user)
                         <div class="col-lg-4 col-12">
-                            <div class="card text-center" style="width: 18rem;">
-                                <img class="card-img-top" src="{{url('/storage/images')}}/{{$model->slika}}" alt="Card image cap">
+                            <div class="card text-center" style="width: 18rem;height: 40rem;">
+                                <img class="card-img-top" src="{{url('/storage/images')}}/{{$user->slika}}" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{$model->name}}</h5>
-                                    <p>E-Mail adresa: {{$model->email}}</p>
-                                    <p>Vrsta računa: {{$model->isadmin==1?'ADMINISTRATOR':'RECEPCIONER'}}</p>
-                                    <p>Registriran: {{\Carbon\Carbon::parse($model->created_at)->diffForHumans()}}</p>
+                                    <h5 class="card-title">{{$user->name}}</h5>
+                                    <p>E-Mail adresa: {{$user->email}}</p>
+                                    <p>Vrsta računa: {{$user->isadmin==1?'ADMINISTRATOR':'RECEPCIONER'}}</p>
+                                    <p>Registriran: {{\Carbon\Carbon::parse($user->created_at)->diffForHumans()}}</p>
                                     <hr>
-                                    <a href="#" class="btn btn-outline-info" >Detalji <i class="fa fa-info"></i></a>&nbsp;
-                                    @can('update',$model)
-                                    <a href="{{url('admin/korisnici')}}/{{$model->id}}/{{('izmjena')}}" class="btn btn-outline-success" >Izmjena <i class="fa fa-cog"></i></a>
-                                    @endcan
+                                    <a href="{{url('admin/korisnici')}}/{{$user->id}}" class="btn btn-outline-info" >Detalji <i class="fa fa-info"></i></a>&nbsp;
+
+                                    <a href="{{url('admin/korisnici')}}/{{$user->id}}/{{('izmjena')}}" class="btn btn-outline-success" >Izmjena <i class="fa fa-cog"></i></a>
+
                                     <hr>
-                                    @can('delete',$model)
-                                    <form method="post" action="#">
+
+                                    <form method="post" action="{{url('admin/korisnici')}}/{{$user->id}}">
                                         @csrf
                                         {{ method_field('delete') }}
                                         <button type="submit" onclick="return confirm('Da li ste sigurni?')" class="btn btn-outline-danger">Izbriši <i class="fa fa-trash"></i></button>
                                     </form>
-                                    @endcan
+
                                 </div>
                             </div>
                         </div>
@@ -71,17 +71,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($models as $model)
+                        @foreach($users as $user)
                             <tr>
-                                <th scope="row">{{$model->name}}</th>
-                                <td>{{$model->email}}</td>
-                                <td>{{$model->isadmin=='1'?'ADMINISTRATOR':'RECEPCIONER'}}</td>
-                                <td>{{\Carbon\Carbon::parse($model->created_at)->diffForHumans()}}</td>
+                                <th scope="row">{{$user->name}}</th>
+                                <td>{{$user->email}}</td>
+                                <td>{{$user->isadmin=='1'?'ADMINISTRATOR':'RECEPCIONER'}}</td>
+                                <td>{{\Carbon\Carbon::parse($user->created_at)->diffForHumans()}}</td>
                                 <td>
-                                    @can('update',$model)
-                                    <a href="{{url('admin/korisnici')}}/{{$model->id}}/{{('izmjena')}}" class="btn btn-outline-info">Uredi  <i class="fa fa-cog"></i></a>
+                                    @can('update',$user)
+                                    <a href="{{url('admin/korisnici')}}/{{$user->id}}/{{('izmjena')}}" class="btn btn-outline-info">Uredi  <i class="fa fa-cog"></i></a>
                                     @endcan
-                                    @can('delete',$model)
+                                    @can('delete',$user)
                                     <form method="post" action="#">
                                         @csrf
                                         {{ method_field('delete') }}

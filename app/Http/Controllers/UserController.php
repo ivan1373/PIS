@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Note;
+use App\Reservation;
+use App\Room;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\User;
@@ -22,8 +25,8 @@ class UserController extends Controller
     public function index()
     {
         //
-        $models = DB::table('users')->orderBy('isadmin','desc')->get();
-        return view('korisnici.index',compact('models'));
+        $users = DB::table('users')->orderBy('isadmin','desc')->get();
+        return view('korisnici.index',compact('users'));
     }
 
     /**
@@ -56,6 +59,11 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        $user = User::findOrFail($id);
+        $reservations = Reservation::where('user_id',$user->id)->get();
+        $notes = Note::where('user_id',$user->id)->get();
+
+        return view('korisnici.show',compact('reservations','user','notes'));
     }
 
     /**

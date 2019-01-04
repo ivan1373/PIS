@@ -64,6 +64,8 @@ Route::prefix('admin')->group(function(){
     Route::get('/', 'UserController@index');
     Route::get('{id}/izmjena', 'UserController@edit');
     Route::put('{id}', 'UserController@update');
+    Route::get('{id}', 'UserController@show');
+    Route::delete('{id}','UserController@destroy');
     });
 
     Route::get('logout', 'ProfileController@logout');
