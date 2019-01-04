@@ -140,6 +140,7 @@ class RoomController extends Controller
     public function edit(Room $room)
     {
         //
+        $this->authorize('update',$room);
         $types = RoomType::all();
         return view('sobe.edit',compact('room','types'));
     }
@@ -154,6 +155,7 @@ class RoomController extends Controller
     public function update(Request $request, Room $room)
     {
         //
+        $this->authorize('update',$room);
         if($room->naziv === $request->get('naziv'))
         {
             $request->validate([
@@ -190,7 +192,7 @@ class RoomController extends Controller
     public function destroy(Room $room)
     {
         //
-
+        $this->authorize('delete', $room);
         $room->delete();
         session()->flash('delete', 'Soba je uspješno izbrisana!');
         return back();

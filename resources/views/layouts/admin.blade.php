@@ -28,7 +28,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{url('admin')}}" class="nav-link"><i class="fa fa-tachometer"></i>&nbsp;Početna stranica</a>
+        <a href="{{url('admin')}}" class="nav-link"><i class="fa fa-tachometer"></i>&nbsp;Administracijsko sučelje</a>
       </li>
     </ul>
 
@@ -106,6 +106,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>Dnevni Izvještaj</p>
               </a>
           </li>
+           <li class="nav-item">
+                <a href="{{url('/')}}" class="nav-link">
+                    <i class="fa fa-home nav-icon"></i>
+                    <p>Početna Stranica</p>
+                </a>
+           </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -139,7 +145,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
     <div class="p-3">
-      <h5 class="text-center"><i class="fa fa-user"></i>&nbsp;{{Auth::user()->name}} {{Auth::user()->isadmin?'ADMINISTRATOR':'RECEPCIONER'}}</h5><br>
+      <h5 class="text-center"><i class="fa fa-user"></i>&nbsp;{{Auth::user()->name}}<br>{{Auth::user()->isadmin?'ADMINISTRATOR':'RECEPCIONER'}}</h5><br>
       <a href="{{url('admin/izmjena')}}" class="nav-link"><i class="fa fa-cog"></i>&nbsp;Izmjena podataka</a>
       <a href="{{url('admin/logout')}}" class="nav-link"><i class="fa fa-sign-out"></i>&nbsp;Odjava</a>
     </div>

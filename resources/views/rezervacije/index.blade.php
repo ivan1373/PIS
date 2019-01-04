@@ -26,6 +26,13 @@
                         &times;</button>
                 </div>
          @endif
+          @if(session()->has('delete'))
+                <div class="alert alert-success" role="alert">
+                    <strong>{{session()->get('delete')}}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        &times;</button>
+                </div>
+          @endif
         <div class="table-responsive">
             <table id="example" class="table display">
                 <thead class="bg-info">
@@ -47,6 +54,13 @@
                         <th>
                             <a href="{{url('admin/rezervacije')}}/{{$reservation->id}}/{{('izmjena')}}" class="btn btn-outline-info">Izmjena</a>
                             <a href="{{url('admin/rezervacije')}}/{{$reservation->id}}/{{('racun')}}" class="btn btn-outline-success">Završi</a>
+                            @can('delete',$reservation)
+                                <form method="post" action="{{url('admin/rezervacije')}}/{{$reservation->id}}">
+                                    @csrf
+                                    {{ method_field('delete') }}
+                                    <button type="submit" onclick="return confirm('Da li ste sigurni?')" class="btn btn-outline-danger">Izbriši <i class="fa fa-trash"></i></button>
+                                </form>
+                            @endcan
                         </th>
                     </tr>
                     @endforeach

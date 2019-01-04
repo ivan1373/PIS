@@ -228,5 +228,18 @@ class ReservationController extends Controller
     public function destroy(Reservation $reservation)
     {
         //
+        $this->authorize('delete',$reservation);
+        $rooms = Room::where('res_id',$reservation->id)->get();
+
+        foreach ($rooms as $room)
+        {
+            $room->status = 0;
+            $room->res_id = null;
+            $room->save();
+        }
+
+        $reservation->delete();
+        session()->flash('delete','Rezervacija je uklonjena!');
+        return back();
     }
 }

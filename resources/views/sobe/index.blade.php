@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('header')
     <h1>Pregled Soba</h1>
-    <hr><a href="{{url('admin/sobe/nova')}}" class="btn btn-outline-success">Dodaj Sobu <i class="fa fa-plus"></i></a>
+    <hr>@can('create',\App\Room::class)<a href="{{url('admin/sobe/nova')}}" class="btn btn-outline-success">Dodaj Sobu <i class="fa fa-plus"></i></a>@endcan
         <a href="{{url('admin/sobe/vrste')}}" class="btn btn-outline-info">Vrste Soba <i class="fa fa-list"></i></a>
 @endsection
 @section('content')
@@ -39,14 +39,18 @@
                         <p>{{$room->status=='1'?'REZERVIRANA':'SLOBODNA'}}</p>
                         <p>Cijena noćenja: {{$room->room_type->cijena}}KM</p>
                         <hr>
-                        <a href="#" class="btn btn-outline-info" >Detalji <i class="fa fa-info"></i></a>&nbsp;
+                        <a href="#" class="btn btn-outline-info" >Detalji <i class="fa fa-info"></i></a>
+                        @can('update',$room)&nbsp;
                         <a href="{{url('admin/sobe/')}}/{{$room->id}}/{{('izmjena')}}" class="btn btn-outline-success" >Izmjena <i class="fa fa-cog"></i></a>
+                        @endcan
                         <hr>
+                        @can('delete',$room)
                         <form method="post" action="{{url('admin/sobe')}}/{{$room->id}}">
                             @csrf
                             {{ method_field('delete') }}
                             <button type="submit" onclick="return confirm('Da li ste sigurni?')" class="btn btn-outline-danger">Izbriši <i class="fa fa-trash"></i></button>
                         </form>
+                        @endcan
                     </div>
                 </div>
             </div>

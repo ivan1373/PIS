@@ -16,6 +16,12 @@ class UserPolicy
      * @param  \App\User  $model
      * @return mixed
      */
+
+    public function before($user)
+    {
+        return $user->isAdmin();
+    }
+
     public function view(User $user, User $model)
     {
         //
@@ -54,7 +60,7 @@ class UserPolicy
     public function delete(User $user, User $model)
     {
         //
-        return $model->id !== $user->id;
+        //return $user->id != $model->id;
     }
 
     /**

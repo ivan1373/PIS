@@ -39,6 +39,7 @@ Route::prefix('admin')->group(function(){
     Route::get('{reservation}','ReservationController@checkOut');
     Route::get('{reservation}/izmjena','ReservationController@edit');
     Route::put('{reservation}','ReservationController@update');
+    Route::delete('{reservation}','ReservationController@destroy');
     });
 
     Route::prefix('sobe')->group(function(){

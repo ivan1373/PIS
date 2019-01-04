@@ -14,7 +14,7 @@
                     <div class="icon">
                         <i class="fa fa-bell"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Više informacija <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{url('admin/rezervacije')}}" class="small-box-footer">Više informacija <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
@@ -26,7 +26,7 @@
                     <div class="icon">
                         <i class="fa fa-bed"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Više informacija <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{url('admin/sobe')}}" class="small-box-footer">Više informacija <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
@@ -38,7 +38,7 @@
                     <div class="icon">
                         <i class="fa fa-users"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Više informacija <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{url('admin/korisnici')}}" class="small-box-footer">Više informacija <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
@@ -50,7 +50,7 @@
                     <div class="icon">
                         <i class="fa fa-sticky-note"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Više informacija <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{url('admin/napomene')}}" class="small-box-footer">Više informacija <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -63,13 +63,6 @@
                 <canvas id="myChart2" width="400" height="400"></canvas>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <div id="calendar"></div>
-            </div>
-        </div>
-
-
     </div>
     <script>
 

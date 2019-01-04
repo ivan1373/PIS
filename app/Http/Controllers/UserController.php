@@ -22,8 +22,8 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = DB::table('users')->orderBy('isadmin','desc')->get();
-        return view('korisnici.index',compact('users'));
+        $models = DB::table('users')->orderBy('isadmin','desc')->get();
+        return view('korisnici.index',compact('models'));
     }
 
     /**
@@ -67,7 +67,11 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+
         $user = User::findOrFail($id);
+
+        $this->authorize('update',$user);
+
         return view('korisnici.edit',compact('user'));
     }
 
@@ -82,6 +86,7 @@ class UserController extends Controller
     {
         //
         $user = User::findOrFail($id);
+        $this->authorize('update',$user);
 
         $request->validate([
             'lozinka' => 'required',
