@@ -35,6 +35,10 @@ Route::prefix('admin')->group(function(){
     Route::get('/', 'ReservationController@index');
     Route::get('nova','ReservationController@create');
     Route::post('nova','ReservationController@store');
+    Route::get('{reservation}/racun','ReservationController@invoice');
+    Route::get('{reservation}','ReservationController@checkOut');
+    Route::get('{reservation}/izmjena','ReservationController@edit');
+    Route::put('{reservation}','ReservationController@update');
     });
 
     Route::prefix('sobe')->group(function(){

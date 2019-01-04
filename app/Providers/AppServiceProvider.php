@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
             $danas = Carbon::now()->format('d-m-Y');
             foreach($rezs as $rez)
             {
-                if(Carbon::parse($rez->datum_do) <= $danas)
+                if(Carbon::parse($rez->datum_do)->format('d-m-Y') <= $danas)
                 {
                     $rez->zavrsena = '1';
                     $rez->save();

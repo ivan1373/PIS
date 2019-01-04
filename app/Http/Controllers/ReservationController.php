@@ -15,6 +15,7 @@ class ReservationController extends Controller
     public function __construct()
     {
         Carbon::setLocale('hr');
+        date_default_timezone_set('Europe/Sarajevo');
     }
     /**
      * Display a listing of the resource.
@@ -107,9 +108,9 @@ class ReservationController extends Controller
         //$reservation->rooms()->sync($id_sobe);
 
 
+        $request->session()->flash('create', 'Rezervacija je uspješno stvorena!');
 
-
-        return back();
+        return redirect('admin/rezervacije');
     }
 
     /**
@@ -132,6 +133,59 @@ class ReservationController extends Controller
     public function edit(Reservation $reservation)
     {
         //
+        return view('rezervacije.edit',compact('reservation'));
+
+    }
+
+    public function invoice(Reservation $reservation)
+    {
+        $rooms = Room::where('res_id',$reservation->id)->get();
+
+        $startDate = Carbon::parse($reservation->datum_od)->format('d-m-Y');
+        $endDate = Carbon::parse($reservation->datum_do)->format('d-m-Y');
+
+        $diff = Carbon::parse($reservation->datum_od)->diffInDays(Carbon::parse($reservation->datum_do));
+
+        $today = Carbon::now()->format('d-m-Y');
+
+        $amount = 0.0;
+        foreach ($rooms as $room)
+        {
+            $amount += $room->room_type->cijena * $diff;
+        }
+
+        $total = $amount + $amount*0.17;
+
+        return view('rezervacije.invoice',compact('reservation','startDate','endDate','amount','total','today','diff'));
+    }
+
+    public function checkOut(Reservation $reservation)
+    {
+        $rooms = Room::where('res_id',$reservation->id)->get();
+        $amount = 0.0;
+
+        //$startDate = Carbon::parse($reservation->datum_od)->format('d-m-Y');
+        //$endDate = Carbon::parse($reservation->datum_do)->format('d-m-Y');
+
+        $diff = Carbon::parse($reservation->datum_od)->diffInDays(Carbon::parse($reservation->datum_do));
+
+        foreach ($rooms as $room)
+        {
+            $amount += $room->room_type->cijena * $diff;
+            $room->status = 0;
+            $room->res_id = null;
+            $room->save();
+        }
+
+        $total = $amount + $amount*0.17;
+        $reservation->naplacena = '1';
+        $reservation->iznos = $total;
+
+        $reservation->save();
+
+        session()->flash('invoice','Rezervacija uspješno naplaćena!');
+        return redirect('admin/rezervacije');
+
     }
 
     /**
@@ -144,6 +198,25 @@ class ReservationController extends Controller
     public function update(Request $request, Reservation $reservation)
     {
         //
+        $request->validate([
+            'gost' => 'required',
+            'datum1' => 'required',
+            'datum2' => 'required|after:datum1',
+            'dorucak' => 'required'
+        ]);
+
+        $res = Reservation::findOrFail($reservation->id);
+
+        $res->gost = $request->get('gost');
+        $res->datum_od = $request->get('datum1');
+        $res->datum_do = $request->get('datum2');
+        $res->dorucak = $request->get('dorucak');
+
+        $res->save();
+
+        $request->session()->flash('update', 'Rezervacija je uspješno izmjenjena!');
+
+        return redirect('admin/rezervacije');
     }
 
     /**
