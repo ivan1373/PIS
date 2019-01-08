@@ -80,10 +80,10 @@
                 <!-- accepted payments column -->
                 <div class="col-6">
                     <p class="lead">Načini plaćanja:</p>
-                    <img src="../../dist/img/credit/visa.png" alt="Visa">
-                    <img src="../../dist/img/credit/mastercard.png" alt="Mastercard">
-                    <img src="../../dist/img/credit/american-express.png" alt="American Express">
-                    <img src="../../dist/img/credit/paypal2.png" alt="Paypal">
+                    <img src="{{url('/images/visa.png')}}" alt="Visa">
+                    <img src="{{url('/images/mastercard.png')}}" alt="Mastercard">
+                    <img src="{{url('/images/american-express.png')}}" alt="American Express">
+                    <img src="{{url('/images/paypal2.png')}}" alt="Paypal">
 
                     <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's

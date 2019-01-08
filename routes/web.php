@@ -39,28 +39,28 @@ Route::prefix('admin')->group(function(){
     Route::get('{reservation}','ReservationController@checkOut');
     Route::get('{reservation}/izmjena','ReservationController@edit');
     Route::put('{reservation}','ReservationController@update');
-    Route::delete('{reservation}','ReservationController@destroy');
+    Route::delete('{reservation}','ReservationController@destroy')->middleware('admin');
     });
 
     Route::prefix('sobe')->group(function(){
     Route::get('/', 'RoomController@index');
-    Route::get('nova', 'RoomController@create');
-    Route::post('nova', 'RoomController@store');
+    Route::get('nova', 'RoomController@create')->middleware('admin');;
+    Route::post('nova', 'RoomController@store')->middleware('admin');;
     Route::get('vrste', 'RoomController@roomtypes');
     Route::post('vrste', 'RoomController@store_roomtypes');
     Route::get('vrste/{id}/izmjena', 'RoomController@edit_roomtypes');
     Route::put('vrste/{id}', 'RoomController@update_roomtypes');
     Route::delete('vrste/{id}', 'RoomController@destroy_roomtypes');
-    Route::get('{room}/izmjena', 'RoomController@edit');
-    Route::put('{room}', 'RoomController@update');
-    Route::delete('{room}', 'RoomController@destroy');
+    Route::get('{room}/izmjena', 'RoomController@edit')->middleware('admin');
+    Route::put('{room}', 'RoomController@update')->middleware('admin');
+    Route::delete('{room}', 'RoomController@destroy')->middleware('admin');
     Route::get('{room}', 'RoomController@show');
     });
 
 
 
 
-    Route::prefix('korisnici')->group(function(){
+    Route::prefix('korisnici')->middleware('admin')->group(function(){
     Route::get('/', 'UserController@index');
     Route::get('{id}/izmjena', 'UserController@edit');
     Route::put('{id}', 'UserController@update');

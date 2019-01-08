@@ -29,7 +29,7 @@ class ReservationController extends Controller
 
 
 
-        $reservations->map(function($item,$key){
+        $reservations->map(function($item){
             $item->datum_od=Carbon::parse($item->datum_od)->format('d-m-Y');
             $item->datum_do=Carbon::parse($item->datum_do)->format('d-m-Y');
         });
