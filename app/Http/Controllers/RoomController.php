@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Reservation;
 use App\Room;
 use App\RoomType;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -13,6 +15,12 @@ class RoomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        Carbon::setLocale('hr');
+    }
+
     public function index()
     {
         //
@@ -129,6 +137,7 @@ class RoomController extends Controller
     public function show(Room $room)
     {
         //
+        //$reservation = Reservation::where('id',$room->res_id);
         return view('sobe.show',compact('room'));
     }
 
