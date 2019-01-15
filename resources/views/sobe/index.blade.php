@@ -39,9 +39,9 @@
                         <p>{{$room->status=='1'?'REZERVIRANA':'SLOBODNA'}}</p>
                         <p>Cijena noćenja: {{$room->room_type->cijena}}KM</p>
                         <hr>
-                        <a href="#" class="btn btn-outline-info" >Detalji <i class="fa fa-info"></i></a>
+                        <a href="{{url('admin/sobe')}}/{{$room->id}}" class="btn btn-outline-info" >Detalji <i class="fa fa-info"></i></a>
                         @can('update',$room)&nbsp;
-                        <a href="{{url('admin/sobe/')}}/{{$room->id}}/{{('izmjena')}}" class="btn btn-outline-success" >Izmjena <i class="fa fa-cog"></i></a>
+                        <a href="{{url('admin/sobe')}}/{{$room->id}}/{{('izmjena')}}" class="btn btn-outline-success" >Izmjena <i class="fa fa-cog"></i></a>
                         @endcan
                         <hr>
                         @can('delete',$room)

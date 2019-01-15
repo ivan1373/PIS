@@ -62,6 +62,13 @@
             <div class="col-sm-6 col-12">
                 <canvas id="myChart2" width="400" height="400"></canvas>
             </div>
+        </div><br>
+        <div class="row bg-light-gradient">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <canvas id="myChart3" width="400" height="400"></canvas>
+            </div>
+            <div class="col-sm-2"></div>
         </div>
     </div>
     <script>
@@ -126,5 +133,34 @@
 
         });
 
+        var ctx3 = document.getElementById("myChart3");
+        var myBarChart = new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: [
+                    @for($i = 0;$i < 10; $i++)
+                    "{{\Carbon\Carbon::now()->addYear($i)->year}}",
+                    @endfor
+                ],
+                datasets: [{
+                    label: 'broj rezervacija po godinama',
+                    data: [
+                        @forEach($arrayOfResCount as $num)
+                        {{$num}},
+                        @endforeach
+                    ],
+                    backgroundColor:  '#17A2B8',
+                    borderColor: '#343A40',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Odnos broja rezervacija po godinama',
+                    fontSize: 18
+                }
+            }
+        });
     </script>
 @endsection

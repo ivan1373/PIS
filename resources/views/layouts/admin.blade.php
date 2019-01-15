@@ -12,8 +12,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>{{ config('app.name', 'Laravel') }}</title>
 
   <!-- Scripts -->
-
-  <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js" integrity="sha256-oSgtFCCmHWRPQ/JmR4OoZ3Xke1Pw4v50uh6pLcu+fIc=" crossorigin="anonymous"></script>
 </head>
@@ -181,6 +180,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 footer: null,
             });
         }
+
 
         $('#example').DataTable( {
             "language": {

@@ -44,8 +44,8 @@ Route::prefix('admin')->group(function(){
 
     Route::prefix('sobe')->group(function(){
     Route::get('/', 'RoomController@index');
-    Route::get('nova', 'RoomController@create')->middleware('admin');;
-    Route::post('nova', 'RoomController@store')->middleware('admin');;
+    Route::get('nova', 'RoomController@create')->middleware('admin');
+    Route::post('nova', 'RoomController@store')->middleware('admin');
     Route::get('vrste', 'RoomController@roomtypes');
     Route::post('vrste', 'RoomController@store_roomtypes');
     Route::get('vrste/{id}/izmjena', 'RoomController@edit_roomtypes');

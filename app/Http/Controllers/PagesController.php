@@ -31,7 +31,17 @@ class PagesController extends Controller
         $notes = Note::all()->count();
         $reservations = Reservation::where('zavrsena','0')->count();
 
-        return view('dashboard',compact('adminsCount','recsCount','reservedCount','freeRoomCount','users','rooms','notes','reservations'));
+
+        //godina
+        $arrayOfResCount = array();
+        $year = Carbon::now()->year;
+        for ($i = 0;$i < 10;$i++)
+        {
+            $count = Reservation::whereYear('created_at',$year + $i)->count();
+            array_push($arrayOfResCount,$count);
+        }
+
+        return view('dashboard',compact('adminsCount','recsCount','reservedCount','freeRoomCount','users','rooms','notes','reservations','arrayOfResCount'));
     }
 
     public function report()
