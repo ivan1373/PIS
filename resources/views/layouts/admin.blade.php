@@ -87,18 +87,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <p>Rezervacije</p>
               </a>
           </li>
+
           <li class="nav-item">
               <a href="{{url('admin/napomene')}}" class="nav-link">
                 <i class="fa fa-comments nav-icon"></i>
                 <p>Napomene</p>
               </a>
           </li>
+
+            @if(Auth::user()->isadmin)
           <li class="nav-item">
               <a href="{{url('admin/korisnici')}}" class="nav-link">
                 <i class="fa fa-users nav-icon"></i>
                 <p>Korisnici</p>
               </a>
           </li>
+            @endif
           <li class="nav-item">
               <a href="{{url('admin/izvjestaj')}}" class="nav-link">
                   <i class="fa fa-file nav-icon"></i>

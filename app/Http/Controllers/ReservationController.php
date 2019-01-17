@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Res_Room;
 use App\Reservation;
 use Carbon\Carbon;
 use App\Room;
@@ -60,8 +61,7 @@ class ReservationController extends Controller
     {
         //$rooms = Room::where('status','0')->get();
 
-        $rooms = Room::where('status','0')
-            ->select('rooms.*')
+        $rooms = Room::select('rooms.*')
             ->join('room_types', 'room_types.id', '=', 'rooms.rtype_id')
             ->orderBy('room_types.br_kreveta')
             ->get();
@@ -101,8 +101,12 @@ class ReservationController extends Controller
         {
             $room = Room::findOrFail($soba);
             $room->status = '1';
-            $room->res_id = $reservation->id;
+            //$room->res_id = $reservation->id;
             $room->save();
+            $resRoom = new Res_Room();
+            $resRoom->res_id = $reservation->id;
+            $resRoom->room_id = $room->id;
+            $resRoom->save
         }
 
         //$reservation->rooms()->sync($id_sobe);
