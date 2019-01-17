@@ -19,8 +19,8 @@ class Room extends Model
         return $this->belongsTo('App\RoomType', 'rtype_id');
     }
 
-    /*public function reservations()
+    public function reservations()
     {
         return $this->belongsTo(Reservation::class,'res_id');
-    }*/
+    }
 }
