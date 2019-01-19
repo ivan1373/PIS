@@ -16,11 +16,11 @@ class CreateRoomsTable extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->increments('id');
             $table->string('naziv')->unique();
-            $table->boolean('status')->default('0');
+           // $table->boolean('status')->default('0');
             $table->unsignedInteger('rtype_id');
-            $table->unsignedInteger('res_id')->nullable();
+            //$table->unsignedInteger('res_id')->nullable();
             $table->foreign('rtype_id')->references('id')->on('room_types')->onDelete('cascade');
-            $table->foreign('res_id')->references('id')->on('reservations')->onDelete('cascade');
+            //$table->foreign('res_id')->references('id')->on('reservations')->onDelete('cascade');
             $table->timestamps();
         });
     }

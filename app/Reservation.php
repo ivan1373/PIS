@@ -11,7 +11,7 @@ class Reservation extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'gost', 'datum_od', 'datum_do', 'dorucak', 'zavrsena', 'naplacena', 'iznos'
+        'gost', 'datum_od', 'datum_do', 'dorucak', 'zavrsena', 'naplacena', 'iznos','room_id'
     ];
 
     public function user(){
@@ -20,6 +20,6 @@ class Reservation extends Model
 
     public function rooms()
     {
-        return $this->hasMany(Room::class,'res_id');
+        return $this->belongsTo(Room::class,'room_id');
     }
 }

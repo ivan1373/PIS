@@ -36,7 +36,7 @@
                     <div class="card-body {{$room->status?'bg-danger':''}}">
                         <h5 class="card-title">{{$room->naziv}}</h5><hr>
                         <p>Broj Kreveta: {{$room->room_type->br_kreveta}}</p>
-                        <p>{{$room->status=='1'?'REZERVIRANA':'SLOBODNA'}}</p>
+                        <p>Broj Rezervacija: {{$room->reservations->count()}}</p>
                         <p>Cijena noćenja: {{$room->room_type->cijena}}KM</p>
                         <hr>
                         <a href="{{url('admin/sobe')}}/{{$room->id}}" class="btn btn-outline-info" >Detalji <i class="fa fa-info"></i></a>

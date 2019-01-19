@@ -33,7 +33,9 @@ Route::prefix('admin')->group(function(){
 
     Route::prefix('rezervacije')->group(function(){
     Route::get('/', 'ReservationController@index');
-    Route::get('nova','ReservationController@create');
+    Route::get('provjera', 'ReservationController@precheck');
+    Route::post('provjera', 'ReservationController@check');
+    //Route::get('nova/{rooms}','ReservationController@create');
     Route::post('nova','ReservationController@store');
     Route::get('{reservation}/racun','ReservationController@invoice');
     Route::get('{reservation}','ReservationController@checkOut');

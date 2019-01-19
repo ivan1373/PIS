@@ -31,16 +31,17 @@
                     </div>
                     <div class="form-group">
                         <label>Datum Od</label>
-                        <input type="date" name="datum1" class="form-control">
+                        <input type="date" name="datum1" class="form-control" value="{{$start}}">
                     </div>
                     <div class="form-group">
                         <label>Datum Do</label>
-                        <input type="date" name="datum2" class="form-control">
+                        <input type="date" name="datum2" class="form-control" value="{{$end}}">
                     </div>
                     <div class="form-group">
-                        <label>Odaberite sobu/sobe</label><br>
+                        <label>Odaberite sobu</label><br>
                         @foreach($rooms as $room)
-                        <input type="checkbox" name="soba[]" value="{{$room->id}}"> Naziv Sobe: <b>{{$room->naziv}}</b>, Broj Kreveta: <b>{{$room->room_type->br_kreveta}}</b><br>
+                        <?php $room_type = App\RoomType::findOrFail($room->rtype_id) ?>
+                        <input type="radio" name="soba" value="{{$room->id}}"> Naziv Sobe: <b>{{$room->naziv}}</b>, Broj Kreveta: <b>{{$room_type->br_kreveta}}</b><br>
                         @endforeach
                     </div>
                     <div class="form-group">

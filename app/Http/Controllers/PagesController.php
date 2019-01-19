@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\User;
 use App\Room;
+use DB;
 
 class PagesController extends Controller
 {
@@ -22,8 +23,9 @@ class PagesController extends Controller
         //za grafove
         $adminsCount = User::where('isadmin','1')->count();
         $recsCount = User::where('isadmin','0')->count();
-        $reservedCount = Room::where('status','1')->count();
-        $freeRoomCount = Room::where('status','0')->count();
+        //$reservedCount = DB::select('SELECT count(DISTINCT room_id) FROM reservations');
+        $reservedCount = DB::table('reservations')->count(DB::raw('DISTINCT room_id'));
+        $freeRoomCount = Room::all()->count() - $reservedCount;
 
         //za blokove
         $users = User::all()->count();
@@ -52,7 +54,7 @@ class PagesController extends Controller
         $usersCount = User::whereDate('created_at',Carbon::now())->count();
         $reservationsCount = Reservation::whereDate('created_at',Carbon::now())->count();
 
-        $freeRoomsCount = Room::where('status','0')->count();
+        $freeRoomsCount = Room::all()->count() - (DB::table('reservations')->count(DB::raw('DISTINCT room_id')));
         $roomsCount = Room::all()->count();
 
         return view('izvjestaj.index',compact('today','notesCount','usersCount','reservationsCount','freeRoomsCount','roomsCount'));

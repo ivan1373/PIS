@@ -22,6 +22,8 @@ class CreateReservationsTable extends Migration
             $table->boolean('zavrsena')->default('0');
             $table->boolean('naplacena')->default('0');
             $table->double('iznos')->default(0.0);
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

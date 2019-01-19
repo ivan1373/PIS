@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('header')
     <h1>Rezervacije</h1><hr>
-    <a href="{{url('admin/rezervacije/nova')}}" class="btn btn-outline-success">Nova rezervacija <i class="fa fa-plus" ></i></a>
+    <a href="{{url('admin/rezervacije/provjera')}}" class="btn btn-outline-success">Nova rezervacija <i class="fa fa-plus" ></i></a>
 @endsection
 @section('content')
     <div class="container">
@@ -27,7 +27,7 @@
                 </div>
          @endif
           @if(session()->has('delete'))
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-danger" role="alert">
                     <strong>{{session()->get('delete')}}</strong>
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
                         &times;</button>
@@ -40,7 +40,7 @@
                         <th>Ime Gosta</th>
                         <th>Početak</th>
                         <th>Kraj</th>
-                        <th>Broj Soba</th>
+                        <th>Naziv Sobe</th>
                         <th>Radnja</th>
                     </tr>
                 </thead>
@@ -50,10 +50,10 @@
                         <th>{{$reservation->gost}}</th>
                         <th>{{$reservation->datum_od}}</th>
                         <th>{{$reservation->datum_do}}</th>
-                        <th>{{$reservation->rooms->count()}}</th>
+                        <th>{{$reservation->rooms->naziv}}</th>
                         <th>
-                            <a href="{{url('admin/rezervacije')}}/{{$reservation->id}}/{{('izmjena')}}" class="btn btn-outline-info">Izmjena</a>
-                            <a href="{{url('admin/rezervacije')}}/{{$reservation->id}}/{{('racun')}}" class="btn btn-outline-success">Završi</a>
+                        @if($reservation->zavrsena == 0)<a href="{{url('admin/rezervacije')}}/{{$reservation->id}}/{{('izmjena')}}" class="btn btn-outline-info">Izmjena</a>@endif
+                            @if($reservation->zavrsena)<a href="{{url('admin/rezervacije')}}/{{$reservation->id}}/{{('racun')}}" class="btn btn-outline-success">Završi</a>@endif
                             @can('delete',$reservation)
                                 <form method="post" action="{{url('admin/rezervacije')}}/{{$reservation->id}}">
                                     @csrf

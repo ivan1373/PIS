@@ -203,6 +203,12 @@ class RoomController extends Controller
     {
         //
         $this->authorize('delete', $room);
+        $reservations = Reservation::where('room_id',$room->id)->get();
+        foreach($reservations as $reservation)
+        {
+            $reservation->room_id = null;
+            $reservation->delete();
+        }
         $room->delete();
         session()->flash('delete', 'Soba je uspješno izbrisana!');
         return back();
