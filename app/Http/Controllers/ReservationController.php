@@ -29,8 +29,6 @@ class ReservationController extends Controller
         //
         $reservations = Reservation::all();
 
-
-
         $reservations->map(function($item){
             $item->datum_od=Carbon::parse($item->datum_od)->format('d-m-Y');
             $item->datum_do=Carbon::parse($item->datum_do)->format('d-m-Y');
@@ -57,15 +55,15 @@ class ReservationController extends Controller
         $end = $request->get('datum2');
 
         $rooms = DB::select("
-        SELECT *
-        FROM rooms
-        WHERE id NOT IN
-        (SELECT room_id 
-        FROM reservations
-        WHERE
-        (datum_od <= '$start' AND datum_do >= '$start') OR
-        (datum_od <= '$end' AND datum_do >= '$end') OR
-        (datum_od >= '$start' AND datum_do <= '$end'))
+            SELECT *
+            FROM rooms
+            WHERE id NOT IN
+            (SELECT room_id 
+            FROM reservations
+            WHERE
+            (datum_od <= '$start' AND datum_do >= '$start') OR
+            (datum_od <= '$end' AND datum_do >= '$end') OR
+            (datum_od >= '$start' AND datum_do <= '$end'))
         ");
 
        
@@ -88,24 +86,10 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*public function create($rooms)
+    public function create()
     {   
-        //$rooms = Room::where('status','0')->get();
-        /*$rooms = DB::raw("
-        SELECT *
-        FROM rooms
-        WHERE room.id NOT IN  (
-                                SELECT room_id
-                                FROM reservations
-                                WHERE reservations.begintime <= '{$datum1}'
-                                AND reservations.endtime >= '{$datum2}'
-                                )
-        ");*/
-
-       
-
-        //return view('rezervacije.create',compact('rooms'));
-    //}
+        
+    }
 
     /**
      * Store a newly created resource in storage.
