@@ -36,13 +36,6 @@ class ReservationController extends Controller
             $item->datum_do=Carbon::parse($item->datum_do)->format('d-m-Y');
         });
 
-        /*
-        foreach($reservations as $reservation)
-        {
-            $reservation->datum_od=Carbon::parse($reservation->datum_od)->format('d-m-Y');
-            $reservation->datum_do=Carbon::parse($reservation->datum_do)->format('d-m-Y');
-        }*/
-
 
         return view('rezervacije.index',compact('reservations'));
     }
@@ -77,8 +70,6 @@ class ReservationController extends Controller
 
        
 
-       // $rooms = Room::all();
-
        if(!empty($rooms))
         {
             return view('rezervacije.create',compact('rooms','start','end'));
@@ -92,13 +83,6 @@ class ReservationController extends Controller
     }
 
 
-   
-    /*public function searchRooms()
-    {
-        $rooms = Room::where('status','0')->get();
-        return view('rezervacije.roomList',$rooms);
-    }
-    */
     /**
      * Show the form for creating a new resource.
      *
@@ -152,19 +136,6 @@ class ReservationController extends Controller
         $reservation->save();
 
         
-        //$sobe->push($request->get('soba'));
-        //$sobe = $request->get('soba');
-       /* foreach($sobe as $soba)
-        {
-            $room = Room::findOrFail($soba);
-            $room->status = '1';
-            $room->res_id = $reservation->id;
-            $room->save();
-        }*/
-
-        //$reservation->rooms()->sync($id_sobe);
-
-
         $request->session()->flash('create', 'Rezervacija je uspješno stvorena!');
 
         return redirect('admin/rezervacije');
@@ -221,20 +192,10 @@ class ReservationController extends Controller
         $room = Room::where('id',$reservation->room_id)->get();
         $amount = 0.0;
 
-        //$startDate = Carbon::parse($reservation->datum_od)->format('d-m-Y');
-        //$endDate = Carbon::parse($reservation->datum_do)->format('d-m-Y');
-
         $diff = Carbon::parse($reservation->datum_od)->diffInDays(Carbon::parse($reservation->datum_do));
 
         $amount = $room->room_type->cijena * $diff;
 
-        /*foreach ($rooms as $room)
-        {
-            $amount += $room->room_type->cijena * $diff;
-            $room->status = 0;
-            $room->res_id = null;
-            $room->save();
-        }*/
 
         $total = $amount + $amount*0.17;
         $reservation->naplacena = '1';
@@ -288,7 +249,6 @@ class ReservationController extends Controller
     {
         //
         $this->authorize('delete',$reservation);
-        //$rooms = Room::where('res_id',$reservation->id)->get();
 
         $reservation->room_id = null;
 

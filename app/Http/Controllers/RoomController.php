@@ -136,9 +136,8 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        //
-        //$reservation = Reservation::where('id',$room->res_id);
-        return view('sobe.show',compact('room'));
+        $reservations = Reservation::where('room_id',$room->id)->get();
+        return view('sobe.show',compact('room','reservations'));
     }
 
     /**

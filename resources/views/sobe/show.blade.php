@@ -12,11 +12,13 @@
             <!-- form start -->
             <div class="card-body text-center">
                 <p>Stvorena: {{$room->created_at->diffForHumans()}}</p><br>
-                <p>Broj Kreveta: {{$room->room_type->br_kreveta}}</p><br>
-                @if($room->status)
-                    <p>Ime Gosta: {{$room->reservations->gost}}</p><br>
-                    <p>Trajanje aktualne rezervacije: {{Carbon\Carbon::parse($room->reservations->datum_od)->format('d.m.Y.')}} do {{Carbon\Carbon::parse($room->reservations->datum_do)->format('d.m.Y.')}}</p>
-                @endif
+                <p>Broj Kreveta: {{$room->room_type->br_kreveta}}</p><br><hr>
+                <p>Aktualne rezervacije:</p>
+                @forelse($reservations as $reservation)
+                <p>{{$reservation->gost}}, od {{\Carbon\Carbon::parse($reservation->datum_od)->format('d. m. Y.')}} do {{\Carbon\Carbon::parse($reservation->datum_do)->format('d. m. Y.')}}</p><br>
+                @empty
+                <p>Trenutno nema aktivnih rezervacija</p>
+                @endforelse
             </div>
                 <!-- /.card-body -->
             <div class="card-footer">

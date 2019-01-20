@@ -96,7 +96,7 @@
             options: {
                 title: {
                     display: true,
-                    text: 'Odnos korisnika prema vrsti računa',
+                    text: 'Korisnik/vrsta računa',
                     fontSize: 18
                 }
             },
