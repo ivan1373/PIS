@@ -151,7 +151,7 @@ class ReservationController extends Controller
 
     public function invoice(Reservation $reservation)
     {
-        $rooms = Room::where('res_id',$reservation->id)->get();
+        $rooms = Room::where('id',$reservation->room_id)->get();
 
         $startDate = Carbon::parse($reservation->datum_od)->format('d-m-Y');
         $endDate = Carbon::parse($reservation->datum_do)->format('d-m-Y');
