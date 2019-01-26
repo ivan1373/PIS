@@ -29760,7 +29760,12 @@ a.text-muted:hover {
 }
 
 .navbar-laravel {
-  background-color: #fff;
+  background: #4776E6;
+  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-gradient(linear, left top, right top, from(#8E54E9), to(#4776E6));
+  background: linear-gradient(to right, #8E54E9, #4776E6);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
@@ -29769,8 +29774,17 @@ h1 {
   font-family: 'Merriweather', serif;
 }
 
-.reserved {
-  background-color: #FF4A62;
+.finished {
+  background-color: #9C9A88;
+}
+
+.backgr {
+  background: #D3CCE3;
+  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-gradient(linear, left top, right top, from(#E9E4F0), to(#D3CCE3));
+  background: linear-gradient(to right, #E9E4F0, #D3CCE3);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 @media print {

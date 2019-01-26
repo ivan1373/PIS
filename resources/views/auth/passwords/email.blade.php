@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-info">{{ __('Reset Password') }}</div>
+                <div class="card-header text-light navbar-laravel">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))

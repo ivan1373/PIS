@@ -46,7 +46,7 @@
                 </thead>
                 <tbody>
                     @foreach($reservations as $reservation)
-                    <tr class="{{$reservation->zavrsena?'bg-secondary':''}}">
+                    <tr class="{{$reservation->zavrsena?'finished':''}}">
                         <th>{{$reservation->gost}}</th>
                         <th>{{$reservation->datum_od}}</th>
                         <th>{{$reservation->datum_do}}</th>
