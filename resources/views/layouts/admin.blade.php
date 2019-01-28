@@ -50,10 +50,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{url('admin')}}" class="brand-link">
-      <img src="{{url('/storage/images')}}/{{Auth::user()->slika}}" class="brand-image img-circle elevation-3"
+    <a href="{{url('admin')}}" class="brand-link navbar-laravel text-light">
+      <img src="{{url('/images/cog.jpg')}}" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Administracija</span>
     </a>
@@ -145,12 +145,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.content-wrapper -->
     <br>
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
+  <aside class="control-sidebar control-sidebar-light">
     <!-- Control sidebar content goes here -->
-    <div class="p-3">
+    <div class="p-3 mt-2">
       <h5 class="text-center"><i class="fa fa-user"></i>&nbsp;{{Auth::user()->name}}<br>{{Auth::user()->isadmin?'ADMINISTRATOR':'RECEPCIONER'}}</h5><br>
-      <a href="{{url('admin/izmjena')}}" class="nav-link"><i class="fa fa-cog"></i>&nbsp;Izmjena podataka</a>
-      <a href="{{url('admin/logout')}}" class="nav-link"><i class="fa fa-sign-out"></i>&nbsp;Odjava</a>
+     
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+        <li class="nav-item">
+          <a href="{{url('admin/izmjena')}}" class="nav-link"><i class="fa fa-cog"></i>
+            <p>Izmjena podataka</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{url('admin/logout')}}" class="nav-link"><i class="fa fa-sign-out"></i>
+              <p>Odjava</p>
+            </a>
+        </li>
+
+        
+      </ul>
     </div>
   </aside>
   <!-- /.control-sidebar -->
@@ -159,7 +174,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Projektiranje informacijskih sustava 2018 | Ivan Miloš
+      Projektiranje informacijskih sustava 2018/19 | Ivan Miloš
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2014-2018 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
